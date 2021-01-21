@@ -28,11 +28,12 @@ const movie = {
 }
 
 test('<Movie> with props' , () => {
-    render(
+    const {getByTestId} = render(
         <MemoryRouter>
              <Movie />
         </MemoryRouter>
      
     )
     expect(console.error).not.toBeCalled()
+
 });

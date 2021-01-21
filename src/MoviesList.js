@@ -14,6 +14,7 @@ class MoviesList extends PureComponent {
         `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1`,
       );
       const movies = await res.json();
+      console.log(movies)
       this.setState({
         movies: movies.results,
       });
@@ -23,6 +24,7 @@ class MoviesList extends PureComponent {
   }
 
   render() {
+    if (this.state.movies < 1) return <h1>Loading</h1>
     return (
       <MovieGrid>
         {this.state.movies.map(movie => <Movie key={movie.id} movie={movie} />)}
